@@ -1,0 +1,41 @@
+<div class="container text-center">
+    <div class="row justify-content-end align-items-center">
+          <h1 class="col-4"> ADMINISTRADOR</h1>
+          <p class="col-3 align-items-center"> BIENVENIDO ID: {{id}} {{persona}} </p>
+          <a class="btn btn-primary col-2 " href="/admin/login/logout" role="button"><i class="bi bi-box-arrow-right"></i> Cerrar sesión </a>
+    </div>
+
+
+
+  <div class="row mt-5 justify-content-around">
+        {{!-- CARD --}}
+        <div class="card col-3 p-3 rounded-lg" style="width: 18rem;">
+            <h2><i class="bi bi-people-fill"></i></h2>
+            <div class="card-body">
+                <h5 class="card-title">USUARIOS</h5>
+                <p class="card-text">Consultar, modificar y eliminar datos de usuario.</p>
+                <a href="/admin/usuarios" class="btn btn-primary"> IR </a>
+            </div>
+        </div>
+
+        <div class="card col-3 p-3 rounded-lg" style="width: 18rem;">
+            <h2><i class="bi bi-calendar3-week-fill"></i></h2>
+            <div class="card-body">
+                <h5 class="card-title">TURNOS</h5>
+                <p class="card-text">Consultar, crear, modificar y eliminar turnos solicitados.</p>
+                <a href="/admin/turnos" class="btn btn-primary"> IR </a>
+            </div>
+        </div>
+
+                <div class="card col-3 p-3 rounded-lg" style="width: 18rem;">
+            <h2><i class="bi bi-calendar3-week-fill"></i></h2>
+            <div class="card-body">
+                <h5 class="card-title">PRODUCTOS</h5>
+                <p class="card-text">Consultar, crear, modificar y eliminar PRODUCTOS solicitados.</p>
+                <a href="/admin/productos" class="btn btn-primary"> IR </a>
+            </div>
+        </div>
+
+
+  </div>
+</div>

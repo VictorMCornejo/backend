@@ -1,0 +1,34 @@
+.nav{
+    grid-area: nav;
+    align-content: center;
+    box-sizing: border-box;
+    z-index: 1;
+}
+.nav ul{
+    display: flex;
+    background-color: rgba(201, 207, 221,0.4);
+    list-style-type: none; /* quitar viñeta */
+    align-content: stretch ;
+    justify-content: center;
+    text-decoration: none;
+    padding: 10px;
+    margin: 0;
+}
+.nav li{
+    width: 200px;
+    text-align: center;
+    align-content: center;
+}
+.nav a{
+    text-decoration: none;
+    padding: 10px 50px;
+}
+.nav a:hover{
+    opacity: 0.5;
+    font-weight: bolder;
+    color: black;
+}
+.activo{
+    background-color: rgb(117, 123, 184);
+    color: beige;
+}

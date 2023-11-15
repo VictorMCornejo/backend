@@ -1,0 +1,36 @@
+<div class="container text-center">
+  <div class="row justify-content-evenly">
+        <h1 class="col">USUARIOS ADMINISTRADORES</h1>
+        <p class="col-2">BIENVENIDO ID: {{id}} {{persona}} </p>
+        <a class="col-auto" href="http://localhost:3000/admin/usuarios/agregarusuario"><button type="button" class="bi bi-person-plus-fill btn btn-success"> NUEVO </button></a>    
+        <a class="col-auto" href="http://localhost:3000/admin/inicio"><button type="button" class="bi bi-house btn btn-danger"> INICIO </button></a>
+        <a class="col-auto" href="http://localhost:3000/admin/login/logout"><button type="button" class="bi bi-box-arrow-right btn btn-primary"> CERRAR SESION </button></a>        
+  </div>
+</div>
+ {{!-- USUARIOS --}}
+  <div> 
+          <table class="container table mt-5">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">USUARIO</th>
+                    <th scope="col">MAIL</th>
+                    <th scope="col-2" class="text-center">ACCIONES</th>
+                  </tr>
+                </thead>
+                {{#each usuarios}}
+                    <tbody>
+                      <tr>
+                        <td>{{id}}</td>
+                        <td>{{usuario}}</td>
+                        <td>{{email}}</td>
+                        <td class="text-center">
+                          <a class="btn btn-primary" href="/admin/usuarios/eliminar/{{id}}"><i class="bi bi-trash3-fill"></i></a>
+                          <a class="btn btn-primary" href="/admin/usuarios/modificar/{{id}}"><i class="bi bi-pencil-fill"></i></a>
+                        </td>
+                      </tr>
+                    </tbody>
+                {{/each}}
+          </table>
+      
+  </div>
