@@ -6,11 +6,34 @@
             <a class="col-auto" href="http://localhost:3000/admin/login/logout"><button type="button" class="bi bi-box-arrow-right btn btn-primary"> CERRAR SESION </button></a>        
     </div>
 
+      {{!-- FORMULARIO CONSULTA --}}
+
+      <h2>*** EN EDICION ***</h2>
+
+
+     <div class="container mt-5">
+        <div class="row justify-content-center">
+            <form action="/admin/turnos/consultarturnosdisponibles" method="get" enctype="multipart-form-data" class="col-8 justify-content-center">  
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text col-2" id="inputGroup-sizing-default">FECHA</span> 
+                    <input type="date" id="consultardia" name="consultardia" class="form-control"  placeholder="Día">
+                </div>
+
+                 <button type="submit" class="btn btn-primary"> CONSULTAR TURNOS DISPONIBLES </button>  
+            </form> 
+        </div>   
+    </div> 
+
+        {{!-- {{#if error}}
+            <br><p>Error al consultar dia en BD</p>
+        {{/if}}  --}}
+
+
   {{!-- FORMULARIO --}}
-  <div class="container mt-5">
+  {{!-- <div class="container mt-5">
         <div class="row justify-content-center">
             <form action="/admin/turnos/agregarturno" method="post" class="col-8 justify-content-center"> 
-
 
             <div class="input-group mb-3">
                 <span class="input-group-text col-2" id="inputGroup-sizing-default">FECHA</span>
@@ -33,11 +56,6 @@
             </div>
 
             <div class="input-group mb-3">
-                <span class="input-group-text col-2" id="inputGroup-sizing-default">FECHA</span>
-                <input type="date" name="dia" class="form-control" id="exampleFormControlInput1" placeholder="Fecha y hora">
-            </div>
-
-            <div class="input-group mb-3">
                 <span class="input-group-text col-2" id="inputGroup-sizing-default">HORA</span>
                 <input type="time" step="3000" name="hora" class="form-control" id="exampleFormControlInput1" placeholder="Fecha y hora">
             </div>
@@ -45,7 +63,6 @@
             <button type="submit" class="btn btn-primary">ENVIAR</button>
 
             </form>
-        </div>
-    </div> 
+        </div>   --}}
 
 </div>

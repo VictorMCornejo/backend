@@ -1,0 +1,49 @@
+<div class="container text-center">
+    <div class="row justify-content-evenly">
+            <h1 class="col">AGREGAR NOVEDAD</h1>
+            <p class="col-2">BIENVENIDO ID: {{id}} {{persona}} </p>
+            <a class="col-auto" href="http://localhost:3000/admin/inicio"><button type="button" class="bi bi-house btn btn-danger"> INICIO </button></a>
+            <a class="col-auto" href="http://localhost:3000/admin/login/logout"><button type="button" class="bi bi-box-arrow-right btn btn-primary"> CERRAR SESION </button></a>        
+    </div>
+
+  {{!-- FORMULARIO --}}
+
+  <div class="container mt-5">
+      <div class="row justify-content-center  align-items-center">
+          <form action="/admin/novedades/agregarnovedad" method="post" enctype="multipart/form-data" class="col-6"> 
+                <div  class="input-group mb-3">
+                    <span class="input-group-text col-4" id="inputGroup-sizing-default">TITULO</span>
+                    <input type="text" name="titulo" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Titulo">
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text col-4" id="inputGroup-sizing-default">SUBTITULO</span>
+                    <input type="text" name="subtitulo" class="form-control" id="exampleFormControlInput1" placeholder="Subtitulo">
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text col-4" id="inputGroup-sizing-default">DESC. BREVE</span>
+                    <input type="text" name="desc_corta" class="form-control" id="exampleFormControlInput1" placeholder="Descripcion breve">
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text col-4" id="inputGroup-sizing-default">DESC. PRINCIPAL</span>
+                    <textarea name="desc_larga" class="form-control" id="exampleFormControlInput1" placeholder="Descripcion principal"></textarea>
+                </div>
+
+                <fieldset class="mt-5 mb-3">
+                    <legend>Desea mostrarlo en la pagina de novedades?</legend>
+                    <input type="radio" id="si" value="SI" name="activo" checked><label> SI </label></input>
+                    <input type="radio" id="no" value="NO" name="activo"><label> NO </label></input>
+                </fieldset>
+
+                <div class="input-group mb-3"> {{!--  IMAGEN --}}
+                    <input type="file" name="imagen" class="form-control" id="imagen">
+                </div>
+
+                <button type="submit" class="btn btn-primary">ENVIAR</button>
+        </form>
+      </div>
+  </div>
+    
+</div>

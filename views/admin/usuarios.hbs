@@ -13,8 +13,10 @@
                 <thead>
                   <tr>
                     <th scope="col">#</th>
+                    <th scope="col">IMAGEN</th>
                     <th scope="col">USUARIO</th>
                     <th scope="col">MAIL</th>
+                    <th scope="col">IMAGEN ID</th>
                     <th scope="col-2" class="text-center">ACCIONES</th>
                   </tr>
                 </thead>
@@ -22,8 +24,10 @@
                     <tbody>
                       <tr>
                         <td>{{id}}</td>
+                        <td>{{{imagen}}}</td>
                         <td>{{usuario}}</td>
                         <td>{{email}}</td>
+                        <td>{{img_id}}</td>
                         <td class="text-center">
                           <a class="btn btn-primary" href="/admin/usuarios/eliminar/{{id}}"><i class="bi bi-trash3-fill"></i></a>
                           <a class="btn btn-primary" href="/admin/usuarios/modificar/{{id}}"><i class="bi bi-pencil-fill"></i></a>

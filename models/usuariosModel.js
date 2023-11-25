@@ -16,7 +16,6 @@ async function postUsuario(obj){ // INSERTAR USUARIO
     try{
         var query='INSERT INTO usuarios SET ?';
         var rows=await pool.query(query,[obj]);
-        console.log(obj);
         return rows;
     }
     catch(error){
@@ -36,6 +35,30 @@ async function getUsuarios(){ // LISTADO DE USUARIOS
         console.log(error);
     }
 }
+async function getUsuarioById(id){ // GET USUARIO BY ID
+    try{
+        var query='SELECT * FROM usuarios WHERE id=?';
+        var rows=await pool.query(query,[id]);
+        return rows;
+    }
+    catch(error){
+        console.log("error en getUsuarioById")
+        console.log(error);
+    }
+}
+
+async function modificarUsuario(obj,id){ // MODIFICAR USUARIO BY ID
+    try{
+        var query='UPDATE usuarios SET ? WHERE id=?';
+        var rows=await pool.query(query,[obj,id]);
+        return rows;
+    }
+    catch(error){
+        console.log("error en modificarUsuario")
+        console.log(error);
+    }
+}
+
 async function deleteUsuarios(id){ // ELIMINAR USUARIO
     try{
         var query='DELETE FROM usuarios WHERE id=?';
@@ -49,4 +72,4 @@ async function deleteUsuarios(id){ // ELIMINAR USUARIO
 }
 
 
-module.exports={getUserByNameAndPassword,getUsuarios,postUsuario,deleteUsuarios};
+module.exports={getUserByNameAndPassword,getUsuarios,postUsuario,deleteUsuarios,getUsuarioById,modificarUsuario};

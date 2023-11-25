@@ -1,11 +1,46 @@
-<h1>NOVEDADES.HBS</h1>
-
-
 <div class="container text-center">
-  <div class="row">
-    <div class="col">
-      <p>BIENVENIDO ID: {{id}} {{persona}} </p>
-      <a class="btn btn-primary" href="/admin/login/logout" role="button"><i class="bi bi-box-arrow-right"></i> Cerrar sesión </a>
-    </div>
+  <div class="row justify-content-evenly">
+        <h1 class="col">NOVEDADES</h1>
+        <p class="col-2">BIENVENIDO ID: {{id}} {{persona}} </p>
+        <a class="col-auto" href="http://localhost:3000/admin/novedades/agregarnovedad"><button type="button" class="bi bi-person-plus-fill btn btn-success"> NUEVO </button></a>    
+        <a class="col-auto" href="http://localhost:3000/admin/inicio"><button type="button" class="bi bi-house btn btn-danger"> INICIO </button></a>
+        <a class="col-auto" href="http://localhost:3000/admin/login/logout"><button type="button" class="bi bi-box-arrow-right btn btn-primary"> CERRAR SESION </button></a>        
+  </div>
+</div>
+
+  {{!-- NOVEDADES --}}
+  <div> 
+          <table class="container table mt-5">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">ACTIVO</th>
+                    <th scope="col">IMAGEN</th>
+                    <th scope="col">TITULO</th>
+                    <th scope="col">SUBTITULO</th>
+                    <th scope="col">DESCRIPCION CORTA</th>
+                    <th scope="col">DESCRIPCION ID</th>
+                    <th scope="col-2" class="text-center">ACCIONES</th>
+                  </tr>
+                </thead>
+                {{#each novedades}}
+                    <tbody>
+                      <tr>
+                        <td>{{id}}</td>
+                        <td>{{activo}}</td>
+                        <td>{{{imagen}}}</td>
+                        <td>{{titulo}}</td>
+                        <td>{{subtitulo}}</td>
+                        <td>{{desc_corta}}</td>
+                        <td>{{desc_larga}}</td>
+                        <td class="text-center">
+                          <a class="btn btn-primary" href="/admin/novedades/eliminar/{{id}}"><i class="bi bi-trash3-fill"></i></a>
+                          <a class="btn btn-primary" href="/admin/novedades/modificar/{{id}}"><i class="bi bi-pencil-fill"></i></a>
+                        </td>
+                      </tr>
+                    </tbody>
+                {{/each}}
+          </table>
+      
   </div>
 </div>

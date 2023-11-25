@@ -1,0 +1,110 @@
+<div class="container text-center">
+    <div class="row justify-content-evenly ">
+            <h1 class="col">MODIFICAR NOVEDAD</h1>
+            <p class="col-2">BIENVENIDO ID: {{id}} {{persona}} </p>
+            <a class="col-auto" href="http://localhost:3000/admin/inicio"><button type="button" class="bi bi-house btn btn-danger"> INICIO </button></a>
+            <a class="col-auto" href="http://localhost:3000/admin/login/logout"><button type="button" class="bi bi-box-arrow-right btn btn-primary"> CERRAR SESION </button></a>        
+    </div>
+
+  {{!-- FORMULARIO --}}
+
+    <div class="container mt-5">
+       <div class="row justify-content-center  align-items-center">
+
+            <div class="col-2 align-self-start">
+                {{{imagen}}}
+            </div>
+
+           {{#each novedad}}
+          <form action="/admin/novedades/modificar" method="post" enctype="multipart/form-data" class="col-6"> 
+
+                <div  class="input-group mb-3">
+                    <span class="input-group-text col-3" id="inputGroup-sizing-default">TITULO</span>
+                    <input type="text" value="{{titulo}}" name="titulo" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Nombre">
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text col-3" id="inputGroup-sizing-default">SUBTITULO</span>
+                    <input type="text" value="{{subtitulo}}" name="subtitulo" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text col-3" id="inputGroup-sizing-default">DESC. BREVE</span>
+                    <input type="text" value="{{desc_corta}}" name="desc_corta" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text col-3" id="inputGroup-sizing-default">DESC. LARGA</span>
+                    <textarea type="textarea" name="desc_larga" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">{{desc_larga}}</textarea>
+                </div>
+
+                <div class="input-group mb-3"> {{!--  IMAGEN --}}
+                    <input type="file" name="imagen" class="form-control" id="imagen">
+                </div>
+
+                <p>* Al cargar una nueva imagen, se eliminara automaticamente la imagen anterior del servidor.</p>
+
+
+                <h5 class="mt-5">Mostrar en la web?</h5>
+                <div class="form-check form-check-inline">      
+                    <input class="form-check-input" type="radio" id="si" value="SI" name="activo" checked>
+                    <label class="form-check-label" for="si">SI</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" id="no" value="NO" name="activo">
+                    <label class="form-check-label" for="no">NO</label>
+                </div>
+
+                
+                {{!-- <fieldset class="mt-5 mb-3">
+                    <h5>Desea mostrarlo en la pagina de novedades?</h5>             
+                        <input type="radio" id="si" value="SI" name="activo" checked><label for="SI"> SI </label></input>
+                        <input type="radio" id="no" value="NO" name="activo"><label for="NO"> NO </label></input>
+                </fieldset> --}}
+
+                {{!-- CAMPOS OCULTOS --}}
+                <input type="hidden" value="{{id}}" name="id" class="form-control" id="exampleFormControlInput1" placeholder="">
+                <input type="hidden" value="{{img_id}}" name="img_id" class="form-control" id="exampleFormControlInput1" placeholder="">
+                
+                <button type="submit" class="btn btn-primary">MODIFICAR</button>
+             {{/each}}
+        </form>
+
+        {{#if error}}
+                <p>{{message}}</p>
+        {{/if}}
+
+    </div> {{!-- FIN CONTENEDOR FORMULARIO --}}
+
+     
+
+    <div class="container p-3 mb-2 mt-5 bg-secondary text-white rounded">    {{!-- CONTENEDOR FORMULARIO ORIGINAL --}}
+        <h3>Datos de usuario iniciales</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>TITULO</td>
+                    <td>SUBTITULO</td>
+                    <td>DESCRIPCION CORTA</td>
+                    <td>DESCRIPCION LARGA</td>
+                    <td>IMG ID</td>
+                </tr>
+            </thead>
+            {{#each novedad}}
+            <tbody>
+                <tr>
+                    <td>{{id}}</td>
+                    <td>{{titulo}}</td>
+                    <td>{{subtitulo}}</td>
+                    <td>{{desc_corta}}</td>
+                    <td>{{desc_larga}}</td>
+                    <td>{{img_id}}</td>
+                </tr>
+            </tbody>
+            {{/each}}
+        </table>
+     </div> 
+          
+  </div>  {{!-- FIN CONTENEDOR PRINCIPAL --}}
+    

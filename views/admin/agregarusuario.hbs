@@ -10,7 +10,7 @@
 
   <div class="container mt-5">
       <div class="row justify-content-center  align-items-center">
-          <form action="/admin/usuarios/agregarusuario" method="post" class="col-6"> 
+          <form action="/admin/usuarios/agregarusuario" method="post" enctype="multipart/form-data" class="col-6"> 
                 <div  class="input-group mb-3">
                     <span class="input-group-text col-2" id="inputGroup-sizing-default">USUARIO</span>
                     <input type="text" name="usuario" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Nombre">
@@ -24,6 +24,10 @@
                 <div class="input-group mb-3">
                     <span class="input-group-text col-2" id="inputGroup-sizing-default">Password</span>
                     <input type="password" name="password" class="form-control" id="exampleFormControlInput1" placeholder="***">
+                </div>
+
+                <div class="input-group mb-3"> {{!--  IMAGEN --}}
+                    <input type="file" name="imagen" class="form-control" id="imagen">
                 </div>
 
                 <button type="submit" class="btn btn-primary">ENVIAR</button>
