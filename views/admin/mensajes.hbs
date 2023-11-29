@@ -1,6 +1,6 @@
 <div class="container text-center">
   <div class="row align-items-center">
-      <h2 class="col ">MENSAJES</h2>
+      <h2 class="col ">MENSAJES RECIBIDOS DESDE LA WEB</h2>
       <p class="col-2">BIENVENIDO ID: {{id}} {{persona}} </p>
       <a class="col-auto" href="http://localhost:3000/admin/inicio"><button type="button" class="bi bi-house btn btn-danger"> INICIO </button></a>
       <a class="col-auto" href="http://localhost:3000/admin/login/logout"><button type="button" class="bi bi-box-arrow-right btn btn-primary"> CERRAR SESION </button></a>        
@@ -11,22 +11,26 @@
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">SKU</th>
-                    <th scope="col">PRODUCTO</th>
-                    <th scope="col">DESCRIPCION</th>
-                    <th scope="col">ACCIONES</th>
+                    <th scope="col">NOMBRE</th>
+                    <th scope="col">APELLIDO</th>
+                    <th scope="col">EMAIL</th>
+                    <th scope="col">TELEFONO</th>
+                    <th scope="col">COMENTARIOS</th>
+                    <th scope="col">FECHA DE ENVIO</th>
                   </tr>
                 </thead>
-                {{#each productos}}
+                {{#each mensajes}}
                     <tbody>
                       <tr>
                         <td>{{id}}</td>
-                        <td>{{sku}}</td>
-                        <td>{{producto}}</td>
-                        <td>{{descripcion}}</td>
+                        <td>{{nombre}}</td>
+                        <td>{{apellido}}</td>
+                        <td>{{email}}</td>
+                        <td>{{telefono}}</td>
+                        <td>{{comentarios}}</td>
+                        <td>{{fecha}}</td>
                         <td class="text-center">
                           <a class="btn btn-primary" href="/admin/mensajes/eliminar/{{id}}"><i class="bi bi-trash3-fill"></i></a>
-                          <a class="btn btn-primary" href="/admin/mensajes/modificar/{{id}}"><i class="bi bi-pencil-fill"></i></a>
                         </td>
                       </tr>
                     </tbody>

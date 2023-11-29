@@ -13,7 +13,7 @@ var indexRouter = require('./routes/index');
 var usuariosRouter = require('./routes/admin/usuarios');
 var loginRouter = require('./routes/admin/login');
 var novedadesRouter = require('./routes/admin/novedades');
-var productosRouter = require('./routes/admin/mensajes');
+var mensajesRouter = require('./routes/admin/mensajes');
 var turnosRouter = require('./routes/admin/turnos');
 var inicioRouter = require('./routes/admin/inicio');
 var apiRouter=require('./routes/api');
@@ -61,10 +61,10 @@ app.use(fileUpload({  // FileUpload
 app.use('/', indexRouter);
 app.use('/admin/login', loginRouter);
 app.use('/admin/novedades', secured,novedadesRouter);
-app.use('/admin/productos', productosRouter);
 app.use('/admin/turnos', secured,turnosRouter);
 app.use('/admin/inicio', secured,inicioRouter);
 app.use('/admin/usuarios', secured,usuariosRouter);
+app.use('/admin/mensajes', secured,mensajesRouter);
 app.use('/api',cors(),apiRouter);
 
 // catch 404 and forward to error handler

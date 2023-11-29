@@ -57,16 +57,16 @@ async function modificarTurnoById(obj,id){        // MODIFICAR TURNO BY ID
     }
 }
 
-async function consultarTurnosDisponibles(obj){         // CONSULTAR TURNOS DISPONIBLES
+async function consultarTurnosDisponibles(consultardia){         // CONSULTAR TURNOS DISPONIBLES
     try{  
-        console.log(`** OBJ: ${obj} **`);
         var query='SELECT dia, hora, horario FROM `turnos` INNER JOIN horarios WHERE dia Like ?';
-            console.log(`** turnos model query: ${query} **`);
-        var rows=await pool.query(query,[obj]);
+        console.log(`** turnos model query: ${query} **`);
+        var rows=await pool.query(query,[consultardia]);
+        console.log(`** rows: ${rows} **`);
         return rows;
     }
     catch(error){
-        console.log("error en consultarTurnosDisponibles");
+        console.log(`error en consultarTurnosDisponibles ${error}`);
         return error;
     }
 }

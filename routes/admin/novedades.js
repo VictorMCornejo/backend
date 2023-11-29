@@ -28,7 +28,6 @@ router.get('/', async function(req, res, next) {                      // GET LIS
         }
       }
   });
-  console.log(novedades);
 
   res.render('admin/novedades',{
     layout: 'admin/layout',
@@ -38,7 +37,7 @@ router.get('/', async function(req, res, next) {                      // GET LIS
   })
 });
 
-router.get('/modificar/:id', async function(req, res, next) {               // GET NOVEDAD BY ID
+router.get('/modificar/:id', async function(req, res, next) {                                 // GET NOVEDAD BY ID
   var id=req.params.id;
   var novedad=await novedadesModel.getNovedadById(id);
   var imagen='';
@@ -71,7 +70,6 @@ router.post('/modificar', async function(req, res, next) {                      
       var id= req.body.id;
       var img_id=req.body.img_id; // Me aseguro de mantener img_id original en caso de no subir archivo
       
-
       if(req.files && Object.keys(req.files).length>0){  // SI SE ADJUNTO ARCHIVO
         if(img_id){ // Si adjunte archivo y si habia una imagen ya cargada, la borro de cloudinary
             const destroy=util.promisify(cloudinary.uploader.destroy);
@@ -120,15 +118,24 @@ router.get('/eliminar/:id', async function(req, res, next) {                    
 
 router.post('/agregarnovedad',async function(req,res,next){                         // POST FORMULARIO DE NUEVA NOVEDAD
   try{ 
-    var img_id='no me cargaron nada';
-    console.log(req.body.activo);
+    var img_id='NULL';
 
     if(req.files && Object.keys(req.files).length>0){   // SI SE ADJUNTO ARCHIVO
+      console.log("Entre a enviar la imagen a cloudinary")
       imagen=req.files.imagen;
       img_id=(await uploader(imagen.tempFilePath)).public_id; // Le pasa la imagen a cloudinary
+      console.log(img_id);
+    }
+    var obj={
+      titulo: req.body.titulo,
+      subtitulo: req.body.subtitulo,
+      desc_corta: req.body.desc_corta,
+      desc_larga: req.body.desc_larga,
+      activo: req.body.activo,
+      img_id
     }
 
-    await novedadesModel.postNovedad(req.body);
+    await novedadesModel.postNovedad(obj);
     res.redirect('/admin/novedades');
   }
   catch(error){

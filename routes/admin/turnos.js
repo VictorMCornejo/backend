@@ -5,6 +5,7 @@ var turnosModel=require('../../models/turnosModel.js');
 
 router.get('/', async function(req, res, next) { // PAGINA TURNOS + LISTADO DE TURNOS
   var turnos= await turnosModel.getTurnos();
+
   res.render('admin/turnos',{
      layout: 'admin/layout',
      turnos
@@ -12,6 +13,8 @@ router.get('/', async function(req, res, next) { // PAGINA TURNOS + LISTADO DE T
 });
 
 router.get('/agregarturno',async function(req,res,next){ // PAGINA AGREGAR TURNO
+  var dia=new Date();
+  console.log(dia);
   res.render('admin/agregarturno',{
     layout: 'admin/layout',
     persona: req.session.nombre,
@@ -19,32 +22,29 @@ router.get('/agregarturno',async function(req,res,next){ // PAGINA AGREGAR TURNO
   })
 });
 
-router.get('/consultarturnosdisponibles',async function(req,res,next){ // CONSULTAR TURNOS DISPONIBLES 
-  var consultardia = req.body.consultardia;
-  console.log(`* consultardia: ${consultardia} *`);
-  console.log(`* req.params.consultardia: ${req.params.consultardia} *`);
-  console.log(`* req.body.consultardia: ${req.body.consultardia} *`);
-  console.log(`* req.consultardia: ${req.consultardia} *`);
+router.get('/consultarturnosdisponibles/:dia',async function(req,res,next){                                        // CONSULTAR TURNOS DISPONIBLES 
+  
+  var dia=req.params.dia;
+  console.log(`* DIA: ${dia} *`);
 
-
-  var turnosdisponibles=await turnosModel.consultarTurnosDisponibles(req.body);
-  res.render('admin/agregarturno',{
-    layout: 'admin/layout',
-    persona: req.session.nombre,
-    id: req.session.id_usuario,
-    turnosdisponibles
-  })
+  //var turnosdisponibles=await turnosModel.consultarTurnosDisponibles(consultardia);
+  // res.render('admin/agregarturno',{
+  //   layout: 'admin/layout',
+  //   persona: req.session.nombre,
+  //   id: req.session.id_usuario,
+  //   turnosdisponibles
+  // })
 });
 
 
-router.get('/eliminar/:id',async function(req,res,next){ // DELETE TURNO
+router.get('/eliminar/:id',async function(req,res,next){                                      // DELETE TURNO
    var id = req.params.id;
    await turnosModel.deleteTurno(id);
    res.redirect('/admin/turnos');
 
 });
 
-router.get('/modificar/:id', async function(req,res,next){ // MODIFICAR TURNO BY ID - SELECCION DEL REGISTRO
+router.get('/modificar/:id', async function(req,res,next){                            // MODIFICAR TURNO BY ID - SELECCION DEL REGISTRO
   var id=req.params.id;
   var turno=await turnosModel.getTurnoById(id);
   console.log(turno);
@@ -55,7 +55,7 @@ router.get('/modificar/:id', async function(req,res,next){ // MODIFICAR TURNO BY
   })
 });
 
-router.post('/modificar', async function(req,res,next){ // MODIFICAR TURNO BY ID 
+router.post('/modificar', async function(req,res,next){                                        // MODIFICAR TURNO BY ID 
   try{
       var id=req.body.id;  
       console.log(`id: ${id}`)
@@ -83,7 +83,7 @@ router.post('/modificar', async function(req,res,next){ // MODIFICAR TURNO BY ID
 });
 
 
-router.post('/agregarturno',async function(req,res,next){ // POST NUEVO TURNO
+router.post('/agregarturno',async function(req,res,next){                           // POST NUEVO TURNO
   try{
     await turnosModel.postTurno(req.body);
     res.redirect('/admin/turnos');

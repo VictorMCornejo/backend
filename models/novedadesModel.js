@@ -1,11 +1,10 @@
 var pool=require('./bd');
 var md5 = require('md5');
 
-async function postNovedad(obj){ // INSERTAR NOVEDAD
+async function postNovedad(obj,img_id){                                                 // INSERTAR NOVEDAD
     try{
         var query='INSERT INTO novedades SET ?';
-        console.log(obj.activo);
-        var rows=await pool.query(query,[obj]);
+        var rows=await pool.query(query,[obj,img_id]);
         return rows;
     }
     catch(error){
@@ -14,11 +13,10 @@ async function postNovedad(obj){ // INSERTAR NOVEDAD
     }
 }
 
-async function getNovedades(){ // LISTADO DE NOVEDADES
+async function getNovedades(){                                                      // LISTADO DE NOVEDADES
     try{
         var query='SELECT * FROM novedades';
         var rows=await pool.query(query);
-        console.log("entre a get novedades");
         return rows;
     }
     catch(error){
@@ -26,7 +24,7 @@ async function getNovedades(){ // LISTADO DE NOVEDADES
         console.log(error);
     }
 }
-async function getNovedadById(id){ // GET NOVEDAD BY ID
+async function getNovedadById(id){                                                   // GET NOVEDAD BY ID
     try{
         var query='SELECT * FROM novedades WHERE id=?';
         var rows=await pool.query(query,[id]);
@@ -62,7 +60,7 @@ async function getNovedadById(id){ // GET NOVEDAD BY ID
     }
 }
 
-async function modificarNovedad(obj,id){ // MODIFICAR NOVEDAD BY ID
+async function modificarNovedad(obj,id){                                                // MODIFICAR NOVEDAD BY ID
     try{
         var query='UPDATE novedades SET ? WHERE id=?';
         var rows=await pool.query(query,[obj,id]);
@@ -74,7 +72,7 @@ async function modificarNovedad(obj,id){ // MODIFICAR NOVEDAD BY ID
     }
 }
 
-async function deleteNovedad(id){ // ELIMINAR NOVEDAD
+async function deleteNovedad(id){                                                       // ELIMINAR NOVEDAD
     try{
         var query='DELETE FROM novedades WHERE id=?';
         var rows=await pool.query(query,[id]);

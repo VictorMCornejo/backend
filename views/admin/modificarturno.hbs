@@ -17,37 +17,30 @@
 
                     <div class="input-group mb-3">
                         <span class="input-group-text col-2" id="inputGroup-sizing-default">DIA</span>
-                        <input type="date" name="dia" value="{{dia}}"class="form-control" id="exampleFormControlInput1" >
+                        <input type="date" name="dia" value="{{dia}}"class="form-control" id="exampleFormControlInput1" required>
                     </div>
 
                     <div class="input-group mb-3">
                         <span class="input-group-text col-2" id="inputGroup-sizing-default">HORA</span>
-                        <input type="time" name="hora" value="{{hora}}" class="form-control" id="exampleFormControlInput1" >
+                        <input type="time" min="9:00" max="12:00" name="hora" value="{{hora}}" class="form-control" id="exampleFormControlInput1" required>
                     </div>
 
                     <input type="hidden" name="id" value="{{id}}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 
                     <div  class="input-group mb-3">
                         <span class="input-group-text col-2" id="inputGroup-sizing-default">DNI</span>
-                        <input type="text" name="dni" value="{{dni}}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        <input type="text" name="dni" value="{{dni}}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
                     </div>
 
                     <div  class="input-group mb-3">
                         <span class="input-group-text col-2" id="inputGroup-sizing-default">NOMBRE</span>
-                        <input type="text" name="nombre" value="{{nombre}}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        <input type="text" name="nombre" value="{{nombre}}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
                     </div>
 
                     <div class="input-group mb-3">
                         <span class="input-group-text col-2" id="inputGroup-sizing-default">E-Mail</span>
-                        <input type="email" name="email" value="{{email}}" class="form-control" id="exampleFormControlInput1" placeholder="{{email}}">
+                        <input type="email" name="email" value="{{email}}" class="form-control" id="exampleFormControlInput1" placeholder="{{email}} required">
                     </div>
-
-                    <div class="input-group mb-3">
-                        
-                        <input type="file" name="file" class="form-control" id="exampleFormControlInput1" placeholder="{{email}}">
-                    </div>
-
-
 
                     <button type="submit" class="btn btn-primary mb-5">MODIFICAR</button>
                 {{/each}}
